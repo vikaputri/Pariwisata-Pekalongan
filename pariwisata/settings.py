@@ -145,3 +145,5 @@ MEDIA_URL = '/media/'
 GRAPHENE = {
     "SCHEMA": "pariwisata.schema.schema"
 }   
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
