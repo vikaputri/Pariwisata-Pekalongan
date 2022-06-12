@@ -15,6 +15,7 @@ class Category(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=255)
+    description = models.TextField(blank=True, null=True)
     content = RichTextField()
     alamat = models.CharField(max_length=255)
     telepon = models.CharField(max_length=12)
