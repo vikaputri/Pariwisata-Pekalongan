@@ -10,7 +10,7 @@ from django.db.models import Q
 class CategoryFilter(django_filters.FilterSet):
     class Meta:
         model = Category
-        fields = ("id", "name", "slug", "article")
+        fields = ("name", "slug", "article")
 
 class  CategoryNode(DjangoObjectType):
     class Meta:
@@ -20,7 +20,7 @@ class  CategoryNode(DjangoObjectType):
 class CategoryType(DjangoObjectType):
     class Meta:
         model = Category
-        fields = ("id", "name", "slug", "article")
+        fields = ("name", "slug", "article")
 
 class FileField(Scalar):
     @staticmethod
@@ -41,7 +41,7 @@ class ArticleType(DjangoObjectType):
     image = FileField()
     class Meta:
         model = Article
-        fields = ("id", "title", "content", "alamat", "telepon","jam", 
+        fields = ("title", "content", "alamat", "telepon","jam", 
             "harga", "slug", "image", "Category", "date_created", "date_modified")
         filter_fields = ["image"]
 
@@ -49,8 +49,7 @@ class ArticleFilter(django_filters.FilterSet):
     class Meta:
         model = Article
         exclude = ['image']
-        fields = ("title", "content", "alamat", "telepon","jam", 
-            "harga", "slug", "Category", "date_created", "date_modified")
+        fields = ("title", "content", "alamat", "telepon","jam", "harga", "slug", "Category")
 
 class ArticleNode(DjangoObjectType):
     image = FileField()
@@ -62,7 +61,7 @@ class OleholehType(DjangoObjectType):
     image = FileField()
     class Meta:
         model = Oleholeh
-        fields = ("id", "title", "description", "slug", "content", "image")
+        fields = ("title", "description", "slug", "content", "image")
         filter_fields = ["image"]
 
 class OleholehFilter(django_filters.FilterSet):
@@ -151,7 +150,7 @@ class Query(graphene.ObjectType):
             return None 
     
 
-class Image(graphene.Mutation):
+"""class Image(graphene.Mutation):
     image = graphene.Field(ArticleType)
     @classmethod
     def mutate(cls, root, info):
@@ -162,7 +161,7 @@ class Image(graphene.Mutation):
 
 class Mutation(graphene.ObjectType):
     image = Image.Field()
-
-schema = graphene.Schema(query=Query, mutation=Mutation)
+"""
+#schema = graphene.Schema(query=Query, mutation=Mutation)
             
-#schema = graphene.Schema(query=Query)
+schema = graphene.Schema(query=Query)

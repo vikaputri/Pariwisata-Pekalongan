@@ -24,8 +24,6 @@ class Article(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     image = models.ImageField(null=True, blank=True, upload_to="destinasi")
     Category = SortedManyToManyField(Category, related_name="category")
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_modified = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.title
