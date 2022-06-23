@@ -25,7 +25,11 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", csrf_exempt(GraphQLView.as_view(graphiql=True))),
     path('api/category/', CategoryView.as_view()),
+    path('api/category/<slug>', CategoryView.as_view()),
     path('api/article/', ArticleView.as_view()),
+    path('api/article/<slug>', ArticleView.as_view()),
     path('api/kuliner/', KulinerView.as_view()),
+    path('api/kuliner/<slug>', KulinerView.as_view()),
     path('api/oleholeh/', OleholehView.as_view()),
+    path('api/oleholeh/<slug>', OleholehView.as_view()),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
