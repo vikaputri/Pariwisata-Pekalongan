@@ -41,15 +41,14 @@ class ArticleType(DjangoObjectType):
     image = FileField()
     class Meta:
         model = Article
-        fields = ("title", "content", "alamat", "telepon","jam", 
-            "harga", "slug", "image", "Category", "date_created", "date_modified")
+        fields = ("title", "description", "content", "alamat", "telepon","jam", "harga", "slug", "image", "Category")
         filter_fields = ["image"]
 
 class ArticleFilter(django_filters.FilterSet):
     class Meta:
         model = Article
         exclude = ['image']
-        fields = ("title", "content", "alamat", "telepon","jam", "harga", "slug", "Category")
+        fields = ("title", "description", "content", "alamat", "telepon","jam", "harga", "slug", "Category")
 
 class ArticleNode(DjangoObjectType):
     image = FileField()
@@ -161,7 +160,7 @@ class Query(graphene.ObjectType):
 
 class Mutation(graphene.ObjectType):
     image = Image.Field()
-"""
-#schema = graphene.Schema(query=Query, mutation=Mutation)
+
+schema = graphene.Schema(query=Query, mutation=Mutation)"""
             
 schema = graphene.Schema(query=Query)
